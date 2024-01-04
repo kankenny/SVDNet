@@ -5,13 +5,13 @@ from scipy import linalg
 SCCompressionResult = namedtuple('CompressionResult', ['compressed_img', 'U', 'S', 'V'])  # Single-Channel
 MCCompressionResult = namedtuple('CompressionResult', ['compressed_img', 'U1', 'S1', 'V1', 'U2', 'S2', 'V2', 'U3', 'S3', 'V3'])  # Multi-Channel
 
-def compress_sc(a, comp_rate=0.2):
+def compress_sc(a, dist_rate=0.2):
     """
     Single-Channel image compression using Singular Value Decomposition (SVD)
 
     Args:
         a (numpy.ndarray): Input image as a 3D tensor (height x width x channels).
-        comp_rate (float, optional): Rate of 'least valuable' rank-1 matrices disregarded (default is 0.2).
+        dist_rate (float, optional): (Distortion) Rate of 'least valuable' rank-1 matrices disregarded (default is 0.2).
         chan_wise (bool, optional): If True, apply independent SVD on individual channels; otherwise, on the average of the channel-wise pixel values (default is True).
 
     Returns:
@@ -22,7 +22,7 @@ def compress_sc(a, comp_rate=0.2):
     """
     U, S, V = linalg.svd(a)
     
-    k = int((1 - comp_rate) * min(a.shape))
+    k = int((1 - dist_rate) * min(a.shape))
     
     U_trunc = U[:, :k]
     S_trunc = np.diag(S[:k])
@@ -32,13 +32,13 @@ def compress_sc(a, comp_rate=0.2):
     
     return SCCompressionResult(compressed_img, U, S, V)
 
-def compress_mc(a, comp_rate=0.2, chan_wise=True):
+def compress_mc(a, dist_rate=0.2, chan_wise=True):
     """
     Multi-Channel image compression using SVD
 
     Args:
         a (numpy.ndarray): Input image as a 3D tensor (height x width x channels).
-        comp_rate (float, optional): Rate of 'least valuable' rank-1 matrices disregarded (default is 0.2).
+        dist_rate (float, optional): (Distortion) Rate of 'least valuable' rank-1 matrices disregarded (default is 0.2).
         chan_wise (bool, optional): If True, apply independent SVD on individual channels; otherwise, on the average of the channel-wise pixel values (default is True).
 
     Returns:
@@ -54,9 +54,9 @@ def compress_mc(a, comp_rate=0.2, chan_wise=True):
         avg = np.sum(a, axis=2) / 3
         a[..., 0:3] = avg[..., None]
 
-    R, U1, S1, V1 = compress_sc(a[..., 0], comp_rate=comp_rate)
-    G, U2, S2, V2 = compress_sc(a[..., 1], comp_rate=comp_rate)
-    B, U3, S3, V3 = compress_sc(a[..., 2], comp_rate=comp_rate)
+    R, U1, S1, V1 = compress_sc(a[..., 0], dist_rate=dist_rate)
+    G, U2, S2, V2 = compress_sc(a[..., 1], dist_rate=dist_rate)
+    B, U3, S3, V3 = compress_sc(a[..., 2], dist_rate=dist_rate)
 
     compressed_img = np.stack([R, G, B], axis=-1)
     
