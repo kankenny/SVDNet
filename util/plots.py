@@ -11,4 +11,9 @@ def compare_compressed(orig, comp):
     plt.colorbar()  # Add a colorbar for reference
     plt.show()
 
-#def scree_plot()
+def scree_plot(S):
+    plt.plot(np.arange(1, len(S) + 1), S, marker='o')
+    plt.title('Scree Plot')
+    plt.xlabel('Singular Value Index')
+    plt.ylabel('Singular Value')
+    plt.show()
