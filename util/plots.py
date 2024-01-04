@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 
 def compare_compressed(orig, comp):
-    print("TEST")
     plt.subplot(1, 2, 1)
     plt.imshow(orig, cmap='gray')  # 'gray' colormap for grayscale images
 
@@ -12,4 +11,4 @@ def compare_compressed(orig, comp):
     plt.colorbar()  # Add a colorbar for reference
     plt.show()
 
-def scree_plot()
+#def scree_plot()
