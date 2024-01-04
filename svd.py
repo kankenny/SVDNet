@@ -19,7 +19,6 @@ def compress_sc(a, comp_rate=0.2):
     U, S, V = linalg.svd(a)
     
     k = int((1 - comp_rate) * min(a.shape))
-    print(k)
     
     U_trunc = U[:, :k]
     S_trunc = np.diag(S[:k])
@@ -36,9 +35,9 @@ def compress_mc(a, comp_rate=0.2):
     I: a - matrix-like arr (3d), comp_rate - rate of rank 1 matrices disregarded
     O: compressed_img - sum of rank 1 matrices 
     """
-    R = compress_sc(a[..., 0])
-    G = compress_sc(a[..., 1])
-    B = compress_sc(a[..., 2])
+    R = compress_sc(a[..., 0], comp_rate=comp_rate)
+    G = compress_sc(a[..., 1], comp_rate=comp_rate)
+    B = compress_sc(a[..., 2], comp_rate=comp_rate)
 
     compressed_img = np.stack([R, G, B], axis=-1)
     
