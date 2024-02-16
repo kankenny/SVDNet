@@ -1,1 +1,11 @@
+# online env playground
+.devcontainer/
+.codesandbox/
 
+# python
+_pycache__/
+*.ipynb_checkpoints/
+
+# hpc
+*.sbatch
+!example*.sbatch
