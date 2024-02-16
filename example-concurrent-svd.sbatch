@@ -22,8 +22,8 @@ echo "Starting Image Data Augmentation - Low Rank Approximation with the SVD"
 
 echo "Purging modules"
 module purge
-echo "Loading Python 3.10.12 module"
-module load python/3.10.12
+echo "Loading Python 3.11.8 module"
+module load python/3.11.8
 
 echo "Creating virtual environment svd-env"
 virtualenv svd-env
