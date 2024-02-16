@@ -1,0 +1,19 @@
+name: Lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Lint with Black
+        uses: psf/black@21.5b1
+        with:
+          options: "--check --verbose"
+          src: "./lib ./resources ./study ./util"
+          jupyter: true
