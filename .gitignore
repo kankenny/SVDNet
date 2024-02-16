@@ -4,6 +4,7 @@
 
 # python
 _pycache__/
+*.ipynb_checkpoints/
 
 # hpc
 *.sbatch
