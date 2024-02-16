@@ -3,9 +3,8 @@ matplotlib==3.7.1
 numpy==1.25.2
 scipy==1.11.4
 tensorflow==2.15.0
-tensorflow-datasets==4.9.4
-tensorboard==2.15.1
+tensorflow-datasets
 tf-keras==2.15.0
 Pillow==9.4.0
-black-24.2.0
-flake8-7.0.0
+black==24.2.0
+flake8==7.0.0
