@@ -19,3 +19,4 @@ Keywords: convolutional neural networks, singular value decomposition, regulariz
 ## Other Resources
 - Paper: https://tinyurl.com/kbasco-svd
 - Presentation: https://tinyurl.com/kbasco-svd-ppt
+- SVDNet Keras Model: https://tinyurl.com/kbasco-svd-model
