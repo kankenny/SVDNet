@@ -1,6 +1,6 @@
 
-# On Image Data Augmentation: Training CNNs with Low-Rank Approximation of Images using the Singular Value Decomposition
----
+## On Image Data Augmentation: Training CNNs with Low-Rank Approximation of Images using the Singular Value Decomposition
+
 ##### Kennette Basco 
 ##### Master's Thesis 
 ##### New York Institute of Technology 
@@ -16,3 +16,8 @@ Keywords: convolutional neural networks, singular value decomposition, regulariz
 SVDNet is a feature extracted and fine-tuned pre-trained VGG16 model using SVD-augmented images
 
 ![MNIST](/resources/mnist.gif)![PATCH](/resources/patch_camelyon.gif)![MALARIA](/resources/malaria.gif)![CATSDOGS](/resources/cats_vs_dogs.gif)
+
+---
+##### Other Resources
+- Paper: https://tinyurl.com/kbasco-svd
+- Presentation: https://tinyurl.com/kbasco-svd-ppt
